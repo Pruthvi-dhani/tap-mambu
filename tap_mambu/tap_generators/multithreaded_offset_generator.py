@@ -84,6 +84,7 @@ class MultithreadedOffsetGenerator(TapGenerator):
                 time.sleep(0.1)
             result = future.result()
             transformed_batch = self.transform_batch(transform_json(result, self.stream_name))
+            # print("transformed batch = ", transformed_batch)
             temp_buffer = set(transformed_batch)
 
             if not temp_buffer:  # We finished the data to extract, time to stop

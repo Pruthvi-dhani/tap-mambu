@@ -9,7 +9,7 @@ class HashableDict(dict):
             return HashableDict(value).__key()
         if type(value) == list:
             return tuple(sorted(map(HashableDict._recur_hash, value)))
-        return value
+        return value if value else str(value)
 
     def __key(self):
         data = [(key, self._recur_hash(value)) for key, value in self.items()]
